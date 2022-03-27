@@ -1,3 +1,15 @@
+# ----------------------------------------------------------------
+# Práctica 5: Multiplicación en SNOW3G y AES
+# Asignatura: Seguridad en Sistemas Informáticos
+# Fecha de entrega: 31/03/2022
+# Autor:
+# - Adrián González Galván
+# - alu0101321219@ull.edu.es
+# ----------------------------------------------------------------
+# En este fichero se incluye el desarrollo de las funciones
+# implementadas enla práctica.
+# ----------------------------------------------------------------
+
 from operator import index, xor
 import string
 import os
