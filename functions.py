@@ -1,5 +1,6 @@
 from operator import index, xor
 import string
+import os
 
 HEXADECIMAL_DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
   'a', 'b', 'c', 'd', 'e', 'f', 'A', 'B', 'C', 'D', 'E', 'F']
@@ -7,18 +8,16 @@ HEXADECIMAL_DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
 SNOW3G_byte = '10101001'
 AES_byte = '00011011'
 
-# Comprueba si un digito es un digito hexadecimal
-def isHexadecimalDigit(digit):
-  if (digit in HEXADECIMAL_DIGITS):
-    return True
-  return False
+# Limpia la pantalla de la terminal
+def cleanTerminal():
+  os.system('cls' if os.name == 'nt' else 'clear')
 
-# Conversor de hexadecimal a decimal
-def hexaToDec(hexadecimal: string):
-  for digit in hexadecimal:
-    if (isHexadecimalDigit(digit) == False):
-      return None
-  return int(hexadecimal, 16)
+# Comprueba si un cadena es un número hexadecimal
+def isHexadecimalDigit(hexa):
+  for digit in hexa:
+    if (digit in HEXADECIMAL_DIGITS == False):
+      return False
+  return True
 
 # Convertir de hexadecimal a binario
 def hexaToBin(hexa: string):
@@ -28,23 +27,6 @@ def hexaToBin(hexa: string):
       return None
     result += str(bin(int(digit, 16))[2:].zfill(4))
   return result
-
-# Convertir de decimal a hexadecimal (sin 0x)
-def decToHex(decimal: int):
-  return hex(decimal)[2:]
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Comprueba que una cadena sea un byte, esto es que sea una cadena
 # de 1's y 0's con longitud 8
