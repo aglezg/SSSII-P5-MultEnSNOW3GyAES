@@ -5,15 +5,12 @@ import os
 HEXADECIMAL_DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
   'a', 'b', 'c', 'd', 'e', 'f', 'A', 'B', 'C', 'D', 'E', 'F']
 
-SNOW3G_byte = '10101001'
-AES_byte = '00011011'
-
 # Limpia la pantalla de la terminal
 def cleanTerminal():
   os.system('cls' if os.name == 'nt' else 'clear')
 
 # Comprueba si un cadena es un número hexadecimal
-def isHexadecimalDigit(hexa):
+def isHexadecimalDigit(hexa: string):
   for digit in hexa:
     if (digit in HEXADECIMAL_DIGITS == False):
       return False
@@ -39,7 +36,6 @@ def isByte(byte: string):
         return False
     return True
 
-
 # Devuelve una lista con los índices de aquellas posiciones que tengan
 # valor 1 de un byte introducido por parámetro
 def getByteIndexsWithValue1(byte: string):
@@ -53,13 +49,10 @@ def getByteIndexsWithValue1(byte: string):
     it -= 1
   return result
 
-
 # Realiza la operación XOR sobre 2 bytes
 # Estos deben ser cadenas de 1's y 0's de longitud 8
 def XORBytes(byte1, byte2):
   if (isByte(byte1) == False or isByte(byte2) == False):
-    return None
-  if (len(byte1) != len(byte2)):
     return None
   else:
     result = ''
@@ -73,9 +66,9 @@ def XORBytes(byte1, byte2):
     return result
 
 # Realiza el desplazamiento del algoritmo.
-# El byte introducido debe expresarse como cadena de 8 bits
+# El byte y la constante introducidas deben expresarse como cadena de 8 bits
 def shiftByte(byte, const):
-  if (isByte(byte) == False):
+  if (isByte(byte) == False or isByte(const)):
     return None
   if (byte[0] == '0'):
     return byte[1:] + '0'
@@ -94,5 +87,3 @@ def binaryByteMultiplication(byte1, byte2, const):
     iterableByte = shiftByte(iterableByte, const)
     it += 1
   return result
-
-print(binaryByteMultiplication('01010111', '10000011', AES_byte))
