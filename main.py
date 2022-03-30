@@ -12,10 +12,6 @@
 from functions import *
 import sys
 
-# Constantes
-SNOW3G_byte = '10101001'
-AES_byte = '00011011'
-
 # Main
 cleanTerminal()
 

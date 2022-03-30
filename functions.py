@@ -14,6 +14,10 @@ from operator import index, xor
 import string
 import os
 
+# Constantes
+SNOW3G_byte = '10101001'
+AES_byte = '00011011'
+
 HEXADECIMAL_DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
   'a', 'b', 'c', 'd', 'e', 'f', 'A', 'B', 'C', 'D', 'E', 'F']
 
@@ -80,7 +84,7 @@ def XORBytes(byte1, byte2):
 # Realiza el desplazamiento del algoritmo.
 # El byte y la constante introducidas deben expresarse como cadena de 8 bits
 def shiftByte(byte, const):
-  if (isByte(byte) == False or isByte(const)):
+  if (isByte(byte) == False or isByte(const) == False):
     return None
   if (byte[0] == '0'):
     return byte[1:] + '0'
@@ -91,7 +95,7 @@ def shiftByte(byte, const):
 # Los bits deben ser enteros de 8 bits
 def binaryByteMultiplication(byte1, byte2, const):
   result = '00000000'
-  iterableByte = byte1
+  iterableByte = str(byte1)
   it = 0
   while (it <= max(getByteIndexsWithValue1(byte2))):
     if (it in getByteIndexsWithValue1(byte2)):
