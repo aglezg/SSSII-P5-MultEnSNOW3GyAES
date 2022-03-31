@@ -83,23 +83,29 @@ def XORBytes(byte1, byte2):
 
 # Realiza el desplazamiento del algoritmo.
 # El byte y la constante introducidas deben expresarse como cadena de 8 bits
-def shiftByte(byte, const):
+def shiftByte(byte, const, printable = False):
   if (isByte(byte) == False or isByte(const) == False):
     return None
   if (byte[0] == '0'):
+    if (printable):
+      print('     ' + byte[1:] + '0')
     return byte[1:] + '0'
   else:
+    if (printable):
+      print('     ' + byte[1:] + '0' + ' + ' + const + ' = ' + XORBytes(byte[1:] + '0', const))
     return XORBytes(byte[1:] + '0', const)
 
 # Multiplicación binaria de 2 bytes
 # Los bits deben ser enteros de 8 bits
-def binaryByteMultiplication(byte1, byte2, const):
+def binaryByteMultiplication(byte1, byte2, const, printable = False):
   result = '00000000'
   iterableByte = str(byte1)
   it = 0
   while (it <= max(getByteIndexsWithValue1(byte2))):
+    if (printable):
+      print('\n   > Step ' + str(it) + ':')
     if (it in getByteIndexsWithValue1(byte2)):
       result = XORBytes(result, iterableByte)
-    iterableByte = shiftByte(iterableByte, const)
+    iterableByte = shiftByte(iterableByte, const, printable)
     it += 1
   return result

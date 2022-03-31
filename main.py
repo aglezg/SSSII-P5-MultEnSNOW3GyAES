@@ -44,4 +44,4 @@ if (algoritmo == 'AES'):
 print(' > Primer byte: ' + byte1)
 print(' > Segundo byte: ' + byte2)
 print(' > Byte algoritmo: ' + const)
-print(' > Multiplicación: ' + binaryByteMultiplication(byte1, byte2, const))
+print('\n > Multiplicación: ' + binaryByteMultiplication(byte1, byte2, const, True))
